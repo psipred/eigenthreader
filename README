@@ -1,0 +1,28 @@
+Compile:
+cc -O3 eigencontact_fread_threader.c -lm -o eigenthreader
+cc -O3 strsum_eigen.c -lm -o strsum_eigen
+
+Typical command line (similar to GenTHREADER):
+eigenthreader -c12 -C0 -t20 -z1250 -m$target -Fss2files/$target.ss2 seqfiles/$target.fasta confiles/$target.con $target.out scop.lst
+
+-c12 = contact distance 12A (something to benchmark perhaps?)
+-t20 = 20 eigenvectors considered (something to benchmark in the paper i.e. try from 1 to n eigenvectors)
+-C0 = minimum contact alignment score required to generate alignment/model
+-z1250 = scaling of eigenvectors (again something to play with but I think this is a reasonable value)
+
+$target.ss2 is standard PSIPRED output file
+$target.con is MetaPSICOV output file (CASP RR format) (see confiles.tar.gz for PSICOV150 benchmark files)
+
+-m will produce PDB file output based on alignments (as with GenTHREADER)
+-p will output alignment on stdout
+
+scop.lst is the fold library list as with GenTHREADER etc.
+
+Also see example.csh.
+
+
+Example to generate paired TDB and eigen file (outputs):
+
+strsum_eigen 1jbeA.pdb 1jbeA.dssp $TDB_DIR/1jbeA.tdb $TDB_DIR/1jbeA.eig
+
+(Env variable TDB_DIR specifies directory for fold library)
