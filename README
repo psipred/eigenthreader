@@ -26,3 +26,14 @@ Example to generate paired TDB and eigen file (outputs):
 strsum_eigen 1jbeA.pdb 1jbeA.dssp $TDB_DIR/1jbeA.tdb $TDB_DIR/1jbeA.eig
 
 (Env variable TDB_DIR specifies directory for fold library)
+
+Output:
+
+eigenthreader output file format. Columns are
+
+1) Estimated probability
+2) T-score
+3) Alignment length
+4) Percentage coverage query
+5) Percentage coverage hit
+6) Match name
